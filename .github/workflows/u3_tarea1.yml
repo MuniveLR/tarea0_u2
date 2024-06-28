@@ -1,0 +1,28 @@
+name: u3_tarea1
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run setup.sh script
+        run: bash setup.sh
+      - name: Make clean
+        run: make clean
+      - name: Make build
+        run: make build
+      - name: Make test
+        run: make test
+      - name: Make lint
+        run: make lint
+      - name: Make integration tests
+        run: make integration-tests
